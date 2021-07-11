@@ -1,2 +1,2 @@
 def calc_score(point, clusters):
-    pass
+    print("大地")
