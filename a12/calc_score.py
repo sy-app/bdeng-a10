@@ -1,2 +1,2 @@
-def calc_score(point):
+def calc_score(point, clusters):
     pass

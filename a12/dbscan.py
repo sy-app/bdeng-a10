@@ -98,4 +98,4 @@ def dbscan(points, epsilon, min_pts):
     # fig.show()
     # fig.savefig('img/a11-result.png', dpi=300)
 
-    return points
+    return points, clusters
