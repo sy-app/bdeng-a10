@@ -11,7 +11,6 @@ def dbscan(points, epsilon, min_pts):
         step += 1
 
         # 近傍点には自分自身も含めて初期化
-        # n_neighborhood = 1
         tmp_neighborhoods = [p]
 
         # pの近傍を探索
@@ -19,7 +18,6 @@ def dbscan(points, epsilon, min_pts):
             if p.id == p_another.id:
                 continue
             if calc_euclidean_distance(p, p_another) <= epsilon:
-                # n_neighborhood += 1
                 tmp_neighborhoods.append(p_another)
 
         # min_pts個以上近傍点がある場合
@@ -32,14 +30,6 @@ def dbscan(points, epsilon, min_pts):
             if label == np.inf:
                 label = new_label
                 new_label += 1
-
-            # if p.belong_to is None:
-            #     label = new_label
-            #     new_label += 1
-            #     # core pointにラベルを付与
-            #     p.belong_to = label
-            # else:
-            #     label = p.belong_to
 
             # 近傍点にラベルを付与
             for tmp_nbh in tmp_neighborhoods:
@@ -74,28 +64,19 @@ def dbscan(points, epsilon, min_pts):
     noise = [p for p in points if p.belong_to is None]
 
     # 描画
-    for cluster in clusters:
+    for i, cluster in enumerate(clusters):
         x = [p.x for p in cluster]
         y = [p.y for p in cluster]
-        ax.scatter(x, y, s=100, c=set_color(cluster[0]))
+        ax.scatter(x, y, s=100, c=set_color(cluster[0]), label='Group{}'.format(i+1))
     x = [p.x for p in noise]
     y = [p.y for p in noise]
-    ax.scatter(x, y, s=100, c=set_color(noise[0]))
-
+    ax.scatter(x, y, s=100, c=set_color(noise[0]), label='Noise')
+    ax.legend()
     ax.set_title('Result')
     ax.set_xlabel('x')
     ax.set_ylabel('y')
 
     fig.show()
-
-    # for i in range(len(x)):
-    #     ax.scatter([x[i]], [y[i]], s=100, c=set_color(i,points,belong))
-    #
-    # ax.set_title('Result')
-    # ax.set_xlabel('x')
-    # ax.set_ylabel('y')
-    #
-    # fig.show()
     # fig.savefig('img/a11-result.png', dpi=300)
 
     return points, clusters
