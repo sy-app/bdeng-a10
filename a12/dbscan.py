@@ -51,7 +51,7 @@ def dbscan(points, epsilon, min_pts):
         ax.set_ylabel('y')
 
         fig.show()
-        # fig.savefig('img/a11-{}.png'.format(step), dpi=300)
+        # fig.savefig('img/a12-{}.png'.format(step), dpi=300)
 
     # visualize result
     fig = plt.figure()
@@ -77,6 +77,6 @@ def dbscan(points, epsilon, min_pts):
     ax.set_ylabel('y')
 
     fig.show()
-    # fig.savefig('img/a11-result.png', dpi=300)
+    # fig.savefig('img/a12-result.png', dpi=300)
 
     return points, clusters
