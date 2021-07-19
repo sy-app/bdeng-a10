@@ -10,3 +10,6 @@ DBSCANの過程を可視化
 
 ## A12
 DBSCAN->外れ値検出
+
+## A13
+内積と単純和によるRecommender
